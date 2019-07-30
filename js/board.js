@@ -35,8 +35,8 @@ function paintScore(){
 function getInit() {
 	board = new Board();
 	ball = getBall(board);
-	enemys = getEnemyByData(data);
-	//enemys=getEnemy();  //测试
+	//enemys = getEnemyByData(data);
+	enemys=getEnemy();  //测试
 	needShowObjs = new Array();
 	pasueIs = false;
 	gameOver = true;
@@ -101,6 +101,7 @@ class Board {
 		this.height = 3;
 		this.speed = 5;
 		this.fx = 0; //right :1
+		this.isfire=false
 		if (typeof this.moveUseMouse != "function") {
 			Board.prototype.moveUseMouse = function (canvas, event) {
 				var x = this.x;

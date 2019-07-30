@@ -10,17 +10,17 @@ function getEnemyByData(data) { //一排10个
 	for (var i = 0; i < data.length; i++) {
 		for (var j = 0; j < data[i].length; j++) {
 			if (data[i][j] == 0) {
-
-			} else if (data[i][j] == 1) {
 				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h));
+			} else if (data[i][j] == 1) {
+				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 1, '#FF00FF'));
 			} else if (data[i][j] == 2) {
 				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 2, '#ff9900'));
 			} else if (data[i][j] == 3) {
-				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 1, '#9ACD32'));
+				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 3, '#9ACD32'));
 			}else if (data[i][j] == 4) {
 				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 4, '#00ff00'));
 			}else if (data[i][j] == 5) {
-				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 3, '#00ff00'));
+				enemys.push(new Enemy(j * (w + 2), i * (h + 2), w, h, 5, '#000000'));
 			}
 		}
 	}
@@ -38,9 +38,9 @@ function getEnemy() { //产生砖块测试
 			STARTY += h + 2;
 		}
 		if (j == 0) {
-			enemys.push(new Enemy(j * w, STARTY, w, h, 4, '##00ff00'))
+			enemys.push(new Enemy(j * w, STARTY, w, h, 5, '##00ff00'))
 		} else {
-				enemys.push(new Enemy(j * (w + 2), STARTY, w, h, 4, '##00ff00')); 
+				enemys.push(new Enemy(j * (w + 2), STARTY, w, h, 5, '##00ff00')); 
 			
 		}
 	}
