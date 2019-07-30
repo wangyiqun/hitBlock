@@ -47,47 +47,43 @@ function getEnemy() { //产生砖块测试
 	return enemys;
 }
 
-class Enemy {
-	constructor(x, y, width, height, t, color, hp) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.treasure = (t) ? t : 999;
-		this.life = true;
-		this.hp = (hp) ? hp : 1;
-		this.color = (color) ? color : "#DC143C";
-		if (typeof show != "function") {
-			Enemy.prototype.show = function (context) {
-				if (this.hp > 1) {
-					context.strokeStyle = 'black';
-					context.rect(this.x, this.y, this.width, this.height);
-					context.stroke();
-					context.fillStyle = this.color;
-					context.fillRect(this.x, this.y, this.width - 10, this.height - 10);
-				}
-				else {
-					context.fillStyle = this.color;
-					context.fillRect(this.x, this.y, this.width, this.height);
-				}
+function Enemy(x, y, width, height, t, color, hp) { //砖块
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
+	this.treasure = (t) ? t : 999;
+	this.life = true;
+	this.hp = (hp) ? hp : 1;
+	this.color = (color) ? color : "#DC143C";
+	if (typeof show != "function") {
+		Enemy.prototype.show = function(context) {
+			if (this.hp > 1) {
+				context.strokeStyle = 'black';
+				context.rect(this.x, this.y, this.width, this.height);
+				context.stroke();
+				context.fillStyle = this.color;
+				context.fillRect(this.x, this.y, this.width - 10, this.height - 10);
+			} else {
 				context.fillStyle = this.color;
 				context.fillRect(this.x, this.y, this.width, this.height);
-			};
-			Enemy.prototype.hited = function () {
-				this.hp -= 1;
-				if (this.hp < 1) {
-					this.downTreasure();
-					this.life = false;
-					window.score += 10;
-				}
-			};
-			Enemy.prototype.downTreasure = function () {
-				if (this.treasure < 999) {
-					var a = new Treasure(this);
-					addforShow(a);
-				}
-			};
+			}
+			context.fillStyle = this.color;
+			context.fillRect(this.x, this.y, this.width, this.height);
+		}
+		Enemy.prototype.hited=function(){
+			this.hp-=1;
+			if(this.hp<1){
+				this.downTreasure();
+				this.life=false;
+				window.score+=10;	
+			}
+		} 
+		Enemy.prototype.downTreasure = function() {
+			if (this.treasure < 999) {
+				var a = new Treasure(this);
+				addforShow(a);
+			}
 		}
 	}
 }
-
