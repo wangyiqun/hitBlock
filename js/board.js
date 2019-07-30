@@ -91,39 +91,43 @@ function cleanCloth() { //清除画布
 	}
 }
 
-function Board() { //挡板
-	this.y = 260;
-	this.life = true;
-	this.width = 60;
-	this.WIDTH = 60;
-	this.x = (window.GAMEWIDTH-this.width)/2;
-	this.height = 3;
-	this.speed = 5;
-	this.fx = 0; //right :1
-	if (typeof this.moveUseMouse != "function") {
-		Board.prototype.moveUseMouse = function(canvas, event) {
-			var x = this.x;
-			var rect = canvas.getBoundingClientRect();//元素到视窗边距离
-			var nowX = event.clientX - rect.left * (canvas.width / rect.width);
-			var a=nowX - this.width / 2;
-			if (a > x) {
-				this.fx = 1;//右移
-			} else if(a < x){
-				this.fx = 2;//左移
-			}else{
-				this.fx = 0;//没有移动
-			}
-			
-			if(a>window.GAMEWIDTH-this.width){
-				a=window.GAMEWIDTH-this.width;
-			}
-			if(a<0)a=0;
-			this.x = a;
-		}
-		Board.prototype.show = function(context) {
-			context.fillStyle = "#0000ff";
-			context.fillRect(this.x, this.y, this.width, this.height);
+class Board {
+	constructor() {
+		this.y = 260;
+		this.life = true;
+		this.width = 60;
+		this.WIDTH = 60;
+		this.x = (window.GAMEWIDTH - this.width) / 2;
+		this.height = 3;
+		this.speed = 5;
+		this.fx = 0; //right :1
+		if (typeof this.moveUseMouse != "function") {
+			Board.prototype.moveUseMouse = function (canvas, event) {
+				var x = this.x;
+				var rect = canvas.getBoundingClientRect(); //元素到视窗边距离
+				var nowX = event.clientX - rect.left * (canvas.width / rect.width);
+				var a = nowX - this.width / 2;
+				if (a > x) {
+					this.fx = 1; //右移
+				}
+				else if (a < x) {
+					this.fx = 2; //左移
+				}
+				else {
+					this.fx = 0; //没有移动
+				}
+				if (a > window.GAMEWIDTH - this.width) {
+					a = window.GAMEWIDTH - this.width;
+				}
+				if (a < 0)
+					a = 0;
+				this.x = a;
+			};
+			Board.prototype.show = function (context) {
+				context.fillStyle = "#0000ff";
+				context.fillRect(this.x, this.y, this.width, this.height);
+			};
 		}
 	}
-
 }
+
