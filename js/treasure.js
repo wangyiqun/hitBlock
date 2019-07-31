@@ -90,7 +90,6 @@ class Treasure {
       };
       Treasure.prototype.boardWeapon = function() {
         new ZiDan().boardWeapon();
-        
       };
 
       Treasure.prototype.show = function() {
@@ -151,16 +150,19 @@ class ZiDan {
       ZiDan.prototype.oneZiDan = function(x, y, speedX, speedY) {
         needShowObjs.push(new ZiDan(x, y, speedX, speedY, "#000000"));
       };
-      ZiDan.prototype.boardWeapon = function() {
-		this.boardTimes += 1;
-		if(this.boardTimes>5){
-			if(t){
-				clearTimeout(t)
-			}
-			
-		}
-        this.oneZiDan(window.board.x, window.board.y, 0, -4);
-        var t=setTimeout(this.oneZiDan, 300, window.board.x, window.board.y, 0, -4);
+      ZiDan.prototype.boardWeapon = function(that) {
+        var newthis=this;
+        if(that){newthis=that}
+        newthis.boardTimes += 1;
+        if (newthis.boardTimes > 5) {
+          if (t) {
+            clearTimeout(t);
+            newthis.boardTimes=0
+          }
+        }
+
+        newthis.oneZiDan(window.board.x, window.board.y, 0, -4);
+        var t = setTimeout(this.boardWeapon, 600,this);
       };
     }
   }
