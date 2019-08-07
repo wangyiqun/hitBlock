@@ -161,7 +161,7 @@ class ZiDan {
           }
         }
 
-        newthis.oneZiDan(window.board.x, window.board.y, 0, -4);
+        newthis.oneZiDan(window.board.x, window.board.y, 0, -8);
         var t = setTimeout(this.boardWeapon, 600,this);
       };
     }

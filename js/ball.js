@@ -45,10 +45,12 @@ class Ball {
 				}
 				if (hitCheck(that, window.board)) {
 					if (window.board.fx == 1) { //挡板往右边移动
-						that.speedY = -that.speedY - 2;
+						that.speedX=that.speedX>0?that.speedX+1:that.speedX-1
+						that.speedY=that.speedY>0?that.speedY+1:that.speedY-1
 						setTimeout(function () {
-							that.speedY = that.speedY < 0 ? that.speedY + 2 : that.speedY - 2;
-						}, 1000);
+							that.speedX=that.speedX>0?that.speedX-1:that.speedX+1
+							that.speedY=that.speedY>0?that.speedY-1:that.speedY+1
+						}, 1500);
 					}
 					else if (window.board.fx == 2) { //挡板往左边移动
 						that.speedX = -that.speedX;
