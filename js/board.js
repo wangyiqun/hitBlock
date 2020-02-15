@@ -35,8 +35,8 @@ function paintScore(){
 function getInit() {
 	board = new Board();
 	ball = getBall(board);
-	//enemys = getEnemyByData(data);
-	enemys=getEnemy();  //测试
+	enemys = getEnemyByData(data);
+	//enemys=getEnemy();  //测试
 	needShowObjs = new Array();
 	pasueIs = false;
 	gameOver = true;
